@@ -4,7 +4,6 @@
 
 [[redirects]]
   from = "/*"
-  to = "/"
+  to = "/?slug=:splat"
   status = 200
   force = false
-  query = {slug = ":path"}
