@@ -53,8 +53,8 @@ class StoryblokService {
     return this.query[param]
   }
 
-  bridge() {
-    if (!this.getQuery('_storyblok')) {
+  bridge(force = false) {
+    if (!this.getQuery('_storyblok') && !force) {
       return ''
     }
     return (<script src='//app.storyblok.com/f/storyblok-latest.js'></script>)

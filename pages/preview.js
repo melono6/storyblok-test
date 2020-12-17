@@ -43,7 +43,9 @@ export default class extends React.Component {
             // page: await StoryblokService.get(`cdn/stories/${slug}`)
         })
 
-        StoryblokService.initEditor(this, true);
+        setTimeout(() => {
+            StoryblokService.initEditor(this, true);
+        }, 2000);
 
     });
 
@@ -54,7 +56,7 @@ export default class extends React.Component {
     return (
       <div>
         <NextHead>
-          {this.state.pageContent && StoryblokService.bridge()}
+          {this.state.pageContent && StoryblokService.bridge(true)}
         </NextHead>
         Preview
         {this.state.pageContent && Components(this.state.pageContent)}
