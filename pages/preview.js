@@ -26,8 +26,14 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
+      console.log(
+          this.props,
+        this.props.url.asPath,
+        this.props.url.pathname,
+          
+      );
     StoryblokService.initEditor(this)
-    const slug = this.props.url.query.slug;
+    const slug = this.props.url.asPath.replace(this.props.url.pathname, '');
     
     StoryblokService.setQuery(slug);
 
