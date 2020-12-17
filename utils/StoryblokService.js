@@ -19,10 +19,10 @@ class StoryblokService {
     return this.client.cacheVersion
   }
 
-  get(slug, params) {
+  get(slug, params, draft = false) {
     params = params || {}
 
-    if (this.getQuery('_storyblok') || this.devMode || (typeof window !== 'undefined' && window.storyblok)) {
+    if (draft || this.getQuery('_storyblok') || this.devMode || (typeof window !== 'undefined' && window.storyblok)) {
       params.version = 'draft'
     }
 
@@ -33,8 +33,8 @@ class StoryblokService {
     return this.client.get(slug, params)
   }
 
-  initEditor(reactComponent) {
-    if (window.storyblok) {
+  initEditor(reactComponent, force = false) {
+    if (force || window.storyblok ) {
       window.storyblok.init({accessToken: this.token})
       window.storyblok.on(['change', 'published'], () => location.reload(true))
       window.storyblok.on('input', (event) => {

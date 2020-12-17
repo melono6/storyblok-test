@@ -32,17 +32,19 @@ export default class extends React.Component {
         this.props.url.pathname,
           
       );
-    StoryblokService.initEditor(this)
     const slug = this.props.url.asPath.replace(this.props.url.pathname, '');
     
     StoryblokService.setQuery(slug);
 
-    StoryblokService.get(`cdn/stories/${slug}`).then((a, b) => {
+    StoryblokService.get(`cdn/stories/${slug}`, {}, true).then((a, b) => {
         console.log(a,b);
         this.setState({
             pageContent: a.data.story.content
             // page: await StoryblokService.get(`cdn/stories/${slug}`)
         })
+
+        StoryblokService.initEditor(this, true);
+
     });
 
     
@@ -52,7 +54,7 @@ export default class extends React.Component {
     return (
       <div>
         <NextHead>
-          {StoryblokService.bridge()}
+          {this.state.pageContent && StoryblokService.bridge()}
         </NextHead>
         Preview
         {this.state.pageContent && Components(this.state.pageContent)}
