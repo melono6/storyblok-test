@@ -3,7 +3,7 @@
   publish = "out"
 
 [[redirects]]
-  from = "/*"
+  from = "/preview/*"
   to = "/?slug=:splat"
   status = 200
   force = false

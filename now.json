@@ -13,6 +13,10 @@
       "dest": "/static/favicon.ico" 
     },
     {
+      "src": "/preview/(.*)$",
+      "dest": "/preview?slug=$1"
+    },
+    {
       "src": "/(.*)$",
       "dest": "/index?slug=$1"
     }
