@@ -4,6 +4,6 @@
 
 [[redirects]]
   from = "/preview/*"
-  to = "/?slug=:splat"
+  to = "/preview/?slug=:splat"
   status = 200
   force = false
